@@ -1,0 +1,137 @@
+﻿@model CharityApp.Models.Donation
+
+@{
+    ViewData["Title"] = "Donate";
+}
+
+<!-- Full Page Background -->
+<style>
+    body {
+        background-image: url('/children.jpg'); /* Path to the image in wwwroot */
+        background-size: cover; /* Make the image cover the whole screen */
+        background-position: center center; /* Center the image */
+        background-attachment: fixed; /* Keep the background fixed during scrolling */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #000; /* Black color for text */
+    }
+
+    h1, h4 {
+        color: #28a745; /* Green color for heading */
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for form */
+        padding: 50px; /* Increased padding for more space */
+        border-radius: 12px; /* Slightly rounded corners for a smoother look */
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+        max-width: 900px; /* Increased width */
+        width: 100%; /* Allow the form to take up more width */
+        margin: auto; /* Center the form */
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #000; /* Black text color for labels */
+    }
+
+    .form-group input {
+        border-radius: 4px;
+        color: #000; /* Black text color inside input fields */
+    }
+
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+            padding: 15px 30px; /* Larger padding for a bigger button */
+            font-size: 18px; /* Larger text size */
+        }
+
+            .form-group input[type="submit"]:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+    .form-check-label {
+        font-weight: normal;
+        color: #000; /* Black text color for checkbox labels */
+    }
+
+    .form-check-input {
+        margin-top: 5px;
+    }
+
+    .text-danger {
+        font-size: 0.9rem;
+        color: #dc3545; /* Red text color for validation messages */
+    }
+
+    .btn-back {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="form-container">
+        <h4>Support a Cause</h4>
+        <hr />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DonorName" class="control-label"></label>
+                <input asp-for="DonorName" class="form-control" />
+                <span asp-validation-for="DonorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonorEmail" class="control-label"></label>
+                <input asp-for="DonorEmail" class="form-control" />
+                <span asp-validation-for="DonorEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GcashNumber" class="control-label"></label>
+                <input asp-for="GcashNumber" class="form-control" />
+                <span asp-validation-for="GcashNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DonationDate" class="control-label"></label>
+                <input asp-for="DonationDate" class="form-control" />
+                <span asp-validation-for="DonationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsAnonymous" /> @Html.DisplayNameFor(model => model.IsAnonymous)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Donate" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <div class="btn-back">
+            <a asp-action="Index" class="btn btn-link text-success">Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

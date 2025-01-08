@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Thank You";
+}
+
+<div class="container text-center mt-5">
+    <div class="jumbotron p-4">
+        <h1 class="display-4 text-success">Thank you for your donation!</h1>
+        <p class="lead text-muted">Your support is greatly appreciated.</p>
+        <hr class="my-4">
+        <p class="text-info">Your generosity makes a real difference. Thank you for being a part of our cause!</p>
+        <button id="okButton" class="btn btn-primary btn-lg">OK</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("okButton").onclick = function() {
+            window.location.href = '@Url.Action("Index", "Home")'; // Redirects to home page
+        };
+    </script>
+}
